@@ -1,0 +1,15 @@
+.block {
+    font-family: 'RalewayRegular';
+}
+
+.profileImage {
+    height: 120px;
+    width: 120px;
+    border-radius: 50%;
+    border: 1px gray solid;
+}
+
+.icon {
+    cursor: pointer;
+    color: gray;
+}
