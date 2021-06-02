@@ -1,6 +1,6 @@
+import { Paper, TextField } from '@material-ui/core';
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
-import { Container } from 'react-bootstrap';
 import StudentDetails from './StudentDetails';
 
 function Student() {
@@ -49,42 +49,46 @@ function Student() {
     }
   };
 
+  const filterByName = (s) => {
+    return (
+      s.firstName.toUpperCase().includes(search.toUpperCase()) ||
+      s.lastName.toUpperCase().includes(search.toUpperCase()) ||
+      s.firstName
+        .toUpperCase()
+        .concat(' ')
+        .concat(s.lastName.toUpperCase())
+        .includes(search.toUpperCase())
+    );
+  };
+
   return (
-    <div className='container'>
-      <Container className='block'>
-        <input
-          type='text'
-          placeholder='Search by name'
-          value={search}
-          onChange={(e) => setSearch(e.target.value)}
-        ></input>
-        <input
-          type='text'
-          placeholder='Search by Tag'
-          value={tag}
-          onChange={(e) => setTag(e.target.value)}
-        ></input>
-        {students
-          .filter(
-            (s) =>
-              s.firstName.toUpperCase().includes(search.toUpperCase()) ||
-              s.lastName.toUpperCase().includes(search.toUpperCase()) ||
-              s.firstName
-                .toUpperCase()
-                .concat(' ')
-                .concat(s.lastName.toUpperCase())
-                .includes(search.toUpperCase())
-          )
-          .filter((s) => filterByTag(s))
-          .map((s) => (
-            <StudentDetails
-              key={s.id}
-              student={s}
-              updateTags={updateTags}
-            ></StudentDetails>
-          ))}
-      </Container>
-    </div>
+    <Paper>
+      <TextField
+        fullWidth
+        size='medium'
+        type='text'
+        placeholder='Search by name'
+        value={search}
+        onChange={(e) => setSearch(e.target.value)}
+      ></TextField>
+      <TextField
+        fullWidth
+        type='text'
+        placeholder='Search by Tag'
+        value={tag}
+        onChange={(e) => setTag(e.target.value)}
+      ></TextField>
+      {students
+        .filter((s) => filterByName(s))
+        .filter((s) => filterByTag(s))
+        .map((s) => (
+          <StudentDetails
+            key={s.id}
+            student={s}
+            updateTags={updateTags}
+          ></StudentDetails>
+        ))}
+    </Paper>
   );
 }
 

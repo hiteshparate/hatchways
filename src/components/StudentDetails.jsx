@@ -1,6 +1,6 @@
+import { Grid, Icon, IconButton, Tooltip, Typography } from '@material-ui/core';
+import { Add, Remove } from '@material-ui/icons';
 import React, { useState } from 'react';
-import { Col, Row } from 'react-bootstrap';
-import { PlusLg, DashLg } from 'react-bootstrap-icons';
 import Tag from './Tag';
 
 function StudentDetails(props) {
@@ -26,16 +26,30 @@ function StudentDetails(props) {
     }
   };
 
+  const expandButton = show ? (
+    <Tooltip title='expand'>
+      <IconButton onClick={() => setShow(!show)}>
+        <Add fontSize='large'></Add>
+      </IconButton>
+    </Tooltip>
+  ) : (
+    <Tooltip title='shrink'>
+      <IconButton onClick={() => setShow(!show)}>
+        <Remove fontSize='large'></Remove>
+      </IconButton>
+    </Tooltip>
+  );
+
   return (
-    <Row className='justify-content-md-center'>
-      <Col xs lg={2}>
+    <Grid container spacing={7}>
+      <Grid item sm={3} justify='center'>
         <img src={pic} className='profileImage' alt='employee'></img>
-      </Col>
-      <Col xs lg={4} md='auto'>
+      </Grid>
+      <Grid item sm={7}>
         <h2>
           {firstName.toUpperCase()} {lastName.toUpperCase()}
         </h2>
-        <p>email: {email}</p>
+        <Typography>email: {email}</Typography>
         <p>Comapny: {company}</p>
         <p>Skill: {skill}</p>
         {show === false
@@ -45,7 +59,7 @@ function StudentDetails(props) {
               </h6>
             ))
           : null}
-        <p>Average: {getAverage(grades)}%</p>
+        <Typography>Average: {getAverage(grades)}%</Typography>
         {tags ? tags.map((t, index) => <Tag key={index} tag={t}></Tag>) : null}
         <input
           type='text'
@@ -54,17 +68,18 @@ function StudentDetails(props) {
           onChange={(e) => setTag(e.target.value)}
           onKeyDown={addInputToTags}
         ></input>
-      </Col>
-      <Col>
-        <i className='icon' onClick={() => setShow(!show)}>
+      </Grid>
+      <Grid item sm={1}>
+        {expandButton}
+        {/* <i className='icon' onClick={() => setShow(!show)}>
           {show === true ? (
             <PlusLg size={30}></PlusLg>
           ) : (
             <DashLg size={30}></DashLg>
           )}
-        </i>
-      </Col>
-    </Row>
+        </i> */}
+      </Grid>
+    </Grid>
   );
 }
 

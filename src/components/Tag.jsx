@@ -1,8 +1,8 @@
+import { Chip } from '@material-ui/core';
 import React from 'react';
-import { Badge } from 'react-bootstrap';
 
 function Tag(props) {
-  return <Badge variant='primary'>{props.tag}</Badge>;
+  return <Chip color='primary' variant='primary' label={props.tag}></Chip>;
 }
 
 export default Tag;
