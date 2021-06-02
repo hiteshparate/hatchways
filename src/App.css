@@ -7,5 +7,61 @@
     width: 120px;
     border-radius: 50%;
     border: 1px gray solid;
-    margin: 20%;
+    margin: 10%;
+}
+
+.card {
+    max-height: 600px;
+    width: 60%;
+    margin-left: 20%;
+    margin-right: 20%;
+    margin-top: 5%;
+    margin-bottom: 5%;
+}
+
+.background {
+    background-color: rgb(245, 239, 239);
+}
+
+.grid {
+    padding: 1%;
+}
+
+.textField {
+    font-size: larger;
+    margin-bottom: 2%;
+}
+
+body {
+    overflow: hidden;
+}
+
+#studentCard {
+    overflow-y: auto;
+}
+
+
+/* Track */
+
+::-webkit-scrollbar-track {
+    visibility: hidden;
+}
+
+
+/* Handle */
+
+::-webkit-scrollbar-thumb {
+    background: rgb(156, 144, 144);
+    border-radius: 10%;
+}
+
+
+/* Handle on hover */
+
+::-webkit-scrollbar-thumb:hover {
+    background: #555;
+}
+
+::-webkit-scrollbar {
+    width: 8px;
 }

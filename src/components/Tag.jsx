@@ -1,8 +1,8 @@
-import { Chip } from '@material-ui/core';
+import { Button } from '@material-ui/core';
 import React from 'react';
 
 function Tag(props) {
-  return <Chip color='primary' variant='primary' label={props.tag}></Chip>;
+  return <Button variant='contained'>{props.tag}</Button>;
 }
 
 export default Tag;

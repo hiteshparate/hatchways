@@ -1,4 +1,4 @@
-import { Paper, TextField } from '@material-ui/core';
+import { Card, TextField } from '@material-ui/core';
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import StudentDetails from './StudentDetails';
@@ -62,22 +62,26 @@ function Student() {
   };
 
   return (
-    <Paper>
-      <TextField
-        fullWidth
-        size='medium'
-        type='text'
-        placeholder='Search by name'
-        value={search}
-        onChange={(e) => setSearch(e.target.value)}
-      ></TextField>
-      <TextField
-        fullWidth
-        type='text'
-        placeholder='Search by Tag'
-        value={tag}
-        onChange={(e) => setTag(e.target.value)}
-      ></TextField>
+    <Card className='grid'>
+      <div className='textField'>
+        <TextField
+          fullWidth
+          type='text'
+          placeholder='Search by name'
+          value={search}
+          onChange={(e) => setSearch(e.target.value)}
+        ></TextField>
+      </div>
+      <div className='textField'>
+        <TextField
+          fullWidth
+          type='text'
+          placeholder='Search by Tag'
+          value={tag}
+          onChange={(e) => setTag(e.target.value)}
+        ></TextField>
+      </div>
+
       {students
         .filter((s) => filterByName(s))
         .filter((s) => filterByTag(s))
@@ -88,7 +92,7 @@ function Student() {
             updateTags={updateTags}
           ></StudentDetails>
         ))}
-    </Paper>
+    </Card>
   );
 }
 

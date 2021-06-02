@@ -1,17 +1,16 @@
 import './App.css';
 import '@fontsource/raleway';
 import Student from './components/Student';
-import { Grid } from '@material-ui/core';
+import { Card, ThemeProvider } from '@material-ui/core';
+import { theme } from './components/theme';
 
 function App() {
   return (
-    <Grid container>
-      <Grid item sm={3}></Grid>
-      <Grid item sm={6}>
+    <ThemeProvider theme={theme}>
+      <Card className='card' id='studentCard'>
         <Student></Student>
-      </Grid>
-      <Grid item sm={3}></Grid>
-    </Grid>
+      </Card>
+    </ThemeProvider>
   );
 }
 
